@@ -1,8 +1,10 @@
 // src/commands/install.ts
 
 import { intro, multiselect, outro, select, text } from "@clack/prompts";
-import color from "picocolors";
 import { cristal } from "gradient-string";
+import color from "picocolors";
+import { ADDITIONNAL_STEPS_OPTIONS } from "../const/ADDITIONNAL_STEPS_OPTIONS.js";
+import { PromptResult } from "../types/PromptResult.js";
 import {
   handleOperation,
   initialFrameworkInstallation,
@@ -10,31 +12,13 @@ import {
 } from "../utils.js";
 
 /**
- * Install command execution
+ * Setup command execution
  * Will install the choosen framework
  * and execute additional steps
  */
-export async function install() {
+export async function setup() {
   showLogo();
   intro(color.cyan("Better View Installer setup"));
-
-  const ADDITIONNAL_STEPS_OPTIONS = [
-    {
-      value: "clean",
-      label: "Clean up default template",
-      hint: "recommended",
-    },
-    {
-      value: "tailwindcss",
-      label: "Install Tailwind CSS",
-    },
-  ] as const;
-
-  type PromptResult = {
-    projectName?: string;
-    framework?: string;
-    additionalSteps?: (typeof ADDITIONNAL_STEPS_OPTIONS)[number]["value"][];
-  };
 
   const result: PromptResult = {
     projectName: "./my-app",

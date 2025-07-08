@@ -2,18 +2,18 @@
 // src/index.js
 
 import { program } from "commander";
-import { install } from "./commands/install";
+import { setup } from "./commands/setup";
 
 program
   .name("bvi")
   .description(
-    "Better Vue Installer (bvi) is a CLI that allows you to initialize Vue.js-based frameworks with more options than the default installer.",
+    "Better Vue Installer (BVI) is a CLI that allows you to initialize Vue.js-based frameworks with more options than the default installer.",
   )
   .version("1.0.0");
 
 program
-  .command("install")
+  .command("setup")
   .description("Initialize Vue.js based framework project")
-  .action(install);
+  .action(setup);
 
 program.parse(process.argv);
