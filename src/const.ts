@@ -9,3 +9,8 @@ export const ADDITIONNAL_STEPS_OPTIONS = [
     label: "Install Tailwind CSS",
   },
 ] as const;
+
+export const FRAMEWORK_OPTIONS = [
+  { value: "vue", label: "Vue.js" },
+  { value: "nuxt", label: "Nuxt" },
+]

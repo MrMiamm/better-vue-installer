@@ -3,13 +3,14 @@
 import { intro, multiselect, outro, select, text } from "@clack/prompts";
 import { cristal } from "gradient-string";
 import color from "picocolors";
-import { ADDITIONNAL_STEPS_OPTIONS } from "../const/ADDITIONNAL_STEPS_OPTIONS.js";
-import { PromptResult } from "../types/PromptResult.js";
+import { ADDITIONNAL_STEPS_OPTIONS, FRAMEWORK_OPTIONS } from "../const.js";
+import { PromptResult } from "../types.js";
 import {
   handleOperation,
   initialFrameworkInstallation,
   showLogo,
 } from "../utils.js";
+import { configureTailwindcss } from "../configuration/tailwindcss.js";
 
 /**
  * Setup command execution
@@ -40,10 +41,7 @@ export async function setup() {
   result.framework = await handleOperation(
     select({
       message: "Pick aframework to use.",
-      options: [
-        { value: "vue", label: "Vue.js" },
-        { value: "nuxt", label: "Nuxt" },
-      ],
+      options: FRAMEWORK_OPTIONS
     }),
   );
 
@@ -74,7 +72,7 @@ export async function setup() {
     if (result.additionalSteps.includes("clean")) {
       // TODO Implement clean framework template
     } else if (result.additionalSteps.includes("tailwindcss")) {
-      // TODO Implement tailwindcss full installation
+      await configureTailwindcss(result.projectName, result.framework)
     }
 
     outro(cristal("✅ Installation complete!"));

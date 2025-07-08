@@ -1,4 +1,4 @@
-import { ADDITIONNAL_STEPS_OPTIONS } from "../const/ADDITIONNAL_STEPS_OPTIONS";
+import { ADDITIONNAL_STEPS_OPTIONS } from "./const.js";
 
 export type PromptResult = {
   projectName?: string;
