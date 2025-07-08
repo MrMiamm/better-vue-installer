@@ -1,0 +1,29 @@
+{
+  "name": "better-vue-installer",
+  "version": "1.0.0",
+  "description": "A command-line interface (CLI) that allows you to initialize Vue.js-based frameworks with more options than the default installer.",
+  "main": "dist/index.js",
+  "type": "module",
+  "bin": {
+    "cli": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "launch": "npm run build && npm run start",
+    "dev": "tsx src/index.ts",
+    "format": "npx prettier . --write"
+  },
+  "dependencies": {
+    "@clack/prompts": "^0.11.0",
+    "commander": "^9.0.0",
+    "execa": "^9.6.0",
+    "gradient-string": "^3.0.0",
+    "picocolors": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.10",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
+  }
+}
